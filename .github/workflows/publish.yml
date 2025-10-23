@@ -38,10 +38,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Sync version in server.json
+      - name: Sync version in server.json with package.json # Just in case the version is not in sync
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          node -e "const fs=require('fs');const s=JSON.parse(fs.readFileSync('server.json'));s.version='$VERSION';s.packages[0].version='$VERSION';fs.writeFileSync('server.json',JSON.stringify(s,null,2)+'\n')"
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Syncing version to: $VERSION"
+          jq --arg v "$VERSION" '.version = $v | .packages[0].version = $v' server.json > tmp.json && mv tmp.json server.json
+          echo "Updated server.json:"
+          cat server.json
 
       - name: Install MCP Publisher
         run: |

@@ -3,12 +3,12 @@
   "name": "io.github.ProfessionalWiki/mediawiki-mcp-server",
   "title": "MediaWiki MCP Server",
   "description": "MCP server enabling AI clients to interact with any MediaWiki wiki through standard tools",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@professional-wiki/mediawiki-mcp-server",
-      "version": "0.1.1",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
       }

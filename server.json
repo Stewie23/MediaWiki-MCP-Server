@@ -13,6 +13,26 @@
       "registryType": "npm",
       "identifier": "@professional-wiki/mediawiki-mcp-server",
       "version": "0.2.1",
+      "environmentVariables": [
+        {
+          "name": "CONFIG",
+          "description": "Path to your configuration file",
+          "default": "config.json",
+          "format": "filepath"
+        },
+        {
+          "name": "MCP_TRANSPORT",
+          "description": "Type of MCP server transport",
+          "choices": ["stdio", "http"],
+          "default": "stdio"
+        },
+        {
+          "name": "PORT",
+          "description": "Port used for StreamableHTTP transport",
+          "format": "number",
+          "default": "3000"
+        }
+      ],
       "transport": {
         "type": "stdio"
       }

@@ -38,6 +38,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
+      - name: Sync version in server.json
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          node -e "const fs=require('fs');const s=JSON.parse(fs.readFileSync('server.json'));s.version='$VERSION';s.packages[0].version='$VERSION';fs.writeFileSync('server.json',JSON.stringify(s,null,2)+'\n')"
+
       - name: Install MCP Publisher
         run: |
           curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher

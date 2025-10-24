@@ -28,6 +28,8 @@ An MCP (Model Context Protocol) server that enables Large Language Model (LLM) c
 
 ## Configuration
 
+> **Note:** Config is only required when interacting with a private wiki or using authenticated tools.
+
 Create a `config.json` file to configure wiki connections. Use the `config.example.json` as a starting point.
 
 ### Basic structure
